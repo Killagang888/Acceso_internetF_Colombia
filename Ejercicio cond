@@ -1,0 +1,9 @@
+
+#Ciclo 03
+
+idiomas=["Árabe", "Inglés", "Francés", "Español"]
+index=0
+for idioma in idiomas:
+    print(f"este idioma esta en la lista:{idiomas[index]}")
+    index+=1
+

@@ -1,0 +1,63 @@
+import pandas as pd
+import numpy as np
+from faker import Faker
+
+pedidos=  ["Laptop", "Impresora", "Monitor", "Teclado", "Mouse"]
+clientes=  ["Juan Pérez", "Ana Gómez", "Carlos Ruiz", "Lucía Torres", "Mario Díaz"]
+id_clientes= [1, 2,  3,  4, 5]
+
+fake = Faker('es_ES')
+
+data = []
+
+for cliente, pedido in zip(clientes, pedidos):
+    data.append({
+        "id_cliente": [id_clientes],
+        "Cliente": [cliente],
+        "Pedido": [pedido],
+        "Dirección": [fake.address()],
+        "Correo electrónico": [fake.email()],
+        "Teléfono": [fake.phone_number()],
+        "Fecha del pedido": fake.date_between(start_date='-30d', end_date='today')
+    })
+
+    df = pd.DataFrame(data)
+
+df = df.rename(columns={
+    "id_cliente": "Identificación",
+    "Cliente": "Nombre del Cliente",
+    "Pedido": "Producto Solicitado",
+    "Dirección": "Dirección de Envío",
+    "Correo electrónico": "Email de Contacto",
+    "Teléfono": "Número Telefónico",
+    "Fecha del pedido": "Fecha"
+})
+
+
+df["Fecha"] = pd.to_datetime(df["Fecha"])
+
+df["mes_pedido"] = df["Fecha"].dt.month
+
+
+df_clientes = pd.DataFrame({
+    "id_cliente": id_clientes,
+    "nombre": clientes})
+
+df_pedidos = pd.DataFrame({
+    "id_cliente": id_clientes,
+    "producto": pedidos})
+
+
+df_combinado = pd.merge(df_clientes, df_pedidos, on="id_cliente", how="inner")
+
+df_relevante = df[["Nombre del Cliente", "Producto Solicitado", "Fecha", "Email de Contacto"]]
+
+df_relevante.to_csv("datos_analisis.csv", index=False)
+
+print(df_relevante)
+
+
+    
+
+    
+

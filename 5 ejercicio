@@ -1,0 +1,14 @@
+
+edad=int(input("ingrese la edad:"))
+if edad < 18:
+    print("usted no puede votar")
+else:
+    print("usted puede votar")
+
+
+
+
+    
+
+
+    

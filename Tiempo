@@ -1,0 +1,6 @@
+
+tiempo=int(input("ingrese una cantidad en minutos:"))
+hora=int(tiempo/60)
+minutos=tiempo%60
+print(f"el tiempo es {hora} horas con {minutos} minutos")
+

@@ -1,0 +1,15 @@
+"""
+mi_lista = ["Grupo 10", 10, 0.28, True, [1, 2, 3, 4], {"nombre": "Ana"}]
+
+# Recorrer la lista e imprimir cada elemento
+
+for elemento in mi_lista:
+
+    print(elemento)"""
+
+mi_lista=["a", "b", "c"]
+mi_lista.append("j")
+mi_lista.append("q")
+mi_lista[0]="Z"
+
+print(mi_lista)

@@ -1,0 +1,13 @@
+
+
+Lado1=int(input("ingrese el lado 1 del triangulo:"))
+Lado2=int(input("ingrese el lado 2 del triangulo:"))
+Lado3=int(input("ingrese el lado 3 del triangulo:"))
+
+if Lado1==Lado2==Lado3:
+    print("el triangulo es equilatero")
+elif Lado1!=Lado2!=Lado3!=Lado1:
+    print("el triangulo es escaleno")
+else:
+    print("el triangulo es isoceles")
+    
